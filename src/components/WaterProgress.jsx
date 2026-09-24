@@ -14,8 +14,8 @@ export function WaterProgress({ consumed, goal}) {
       <Text style={styles.subtitle} > Você atingiu {porcentagem}% da Meta               </Text>
 
       {/* {BARRA AZUL} */}
-      <View style={{width:'100%', height:'30', backgroundColor:'red', borderRadius:20}}>
-            <View style={{height:'100%', backgroundColor:'green', width:`${porcentagem}`}} />
+      <View style={styles.progressBarBackground}>
+        <View style={[styles.progressBarFill, { width: `${porcentagem}%` }]} />
       </View>
 
     </View>
@@ -24,18 +24,39 @@ export function WaterProgress({ consumed, goal}) {
 }
 
 const styles = StyleSheet.create({
-
-  container: {
-    alignItems: 'center',
+  card: {
+    backgroundColor: COLORS.cardBg,
+    borderRadius: 16,
     padding: 20,
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 24,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
-
-  title: {
-    color: COLORS.primary ,
+  consumedText: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: COLORS.primary,
   },
-
-  subtitle: {
-    
+  percentageText: {
+    fontSize: 14,
+    color: COLORS.textMuted,
+    marginBottom: 16,
   },
-
-})
+  progressBarBackground: {
+    width: '100%',
+    height: 12,
+    backgroundColor: '#E0F2FE',
+    borderRadius: 6,
+    overflow: 'hidden',
+  },
+  progressBarFill: {
+    height: '100%',
+    backgroundColor: COLORS.secondary,
+    borderRadius: 6,
+  },
+});
